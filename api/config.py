@@ -3,12 +3,12 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
-        env_file=".env", env_file_encoding="utf-8", case_sensitive=True
+        env_file=".env", env_file_encoding="utf-8", case_sensitive=False
     )
 
     aws_region: str = "eu-west-1"
-    aws_access_key_id: str | None
-    aws_secret_access_key: str | None
+    aws_access_key_id: str | None = None
+    aws_secret_access_key: str | None = None
 
     bedrock_llm_model: str = "anthropic.claude-haiku-4-5"
     bedrock_embedding_model: str = "amazon.titan-embed-text-v2:0"
